@@ -21,8 +21,10 @@ def detail(request):
         cartItems = order['get_cart_items']
         user_not_login = 'show'
         user_login = 'hidden'
+    id = request.GET.get('id','')
+    product = Product.objects.filter(id=True)
     categories = Category.objects.filter(is_sub = False)
-    context = {'categories':categories,'items':items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
+    context = {'product':product,'categories':categories,'items':items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
     return render(request,'app/detail.html',context)
 def category(request):
     categories = Category.objects.filter(is_sub = True)

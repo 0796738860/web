@@ -38,7 +38,7 @@
             <hr>
 
             <button data-product={{product.id}} data-action='add' class='btn btn-outline-secondary add-btn update-cart' style='width:100%'>Add to cart</button>
-            <a class='btn btn-outline-success ' style='width:100%' href='#'>View</a>
+            <a class='btn btn-outline-success ' style='width:100%' href="{% url 'detail' %}? id={{product.id}}">View</a>
             <h4 class='text-center'><strong>{{product.price |floatformat:6}} VNĐ</strong></h4>
         </div>
     </div>
