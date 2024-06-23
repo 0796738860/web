@@ -24,6 +24,7 @@ class Customer(models.Model):
         return self.name
 class Product(models.Model):
      category = models.ManyToManyField(Category,related_name='product')
+     idproduct = models.IntegerField(default=1,null=True,blank=False)
      name = models.CharField(max_length=200,null=True)
      price = models.FloatField()
      digital = models.BooleanField(default=False,null=True,blank=False)

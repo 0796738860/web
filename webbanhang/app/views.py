@@ -1,3 +1,4 @@
+from venv import logger
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
 from .models import *
@@ -21,10 +22,11 @@ def detail(request):
         cartItems = order['get_cart_items']
         user_not_login = 'show'
         user_login = 'hidden'
-    id = request.GET.get('id','')
-    product = Product.objects.filter(id=True)
+    
+    idProduct = int(request.GET.get('idproduct','17'))
+    products = Product.objects.filter(id = idProduct)
     categories = Category.objects.filter(is_sub = False)
-    context = {'product':product,'categories':categories,'items':items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
+    context = {'products':products,'categories':categories,'items':items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
     return render(request,'app/detail.html',context)
 def category(request):
     categories = Category.objects.filter(is_sub = True)
